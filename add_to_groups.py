@@ -1,3 +1,5 @@
+# make sure to look at the other files and sometimes you se something around "with open("...txt") as file:" 
+# this is defently better then just open(...) as it manage the files automatically and you will not need to close the files manually etc.
 import requests , threading, random, json
 open('log.txt', 'w').close()
 user_id = input('Enter User ID:')
