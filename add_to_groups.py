@@ -20,6 +20,9 @@ def sendreq():
             channelid = l2.strip('\n')
             response = requests.put(f'https://discord.com/api/v9/channels/{channelid}/recipients/{user_id}',headers={'Authorization': token})
 
+# changing the value of the variable "th" might cause connection issues and the whole code will run wayyy slower even if you put a higher number.
+# this number do NOT mean the total requests. the number of connections at the same time is meant. the total connections are defined in for line in shit
+# so the total number of connections equals to the lines of the group_id.txt file.
 th = 10
 for i in range(th):
     t = threading.Thread(target=sendreq)
