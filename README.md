@@ -1,5 +1,4 @@
-# EDUCATIONAL ONLY! DESCRIPTION BELOW IS FROM SOMEONE ELSE!!
-
+# EDUCATIONAL ONLY! 
 ### HOW TO INSTALL
 -----------------------------------
 1. Edit config.json with your discord account token and the imagepath (if its in the same location as the all_ogether.py file you only need to type cool.jpg)
