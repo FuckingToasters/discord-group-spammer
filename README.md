@@ -16,7 +16,7 @@ use it with vpn if you have bad proxies. discord will disable accounts if used b
 - custom useragents
 - and more if suggested
 
-# Peview:
+# Preview:
 Mass Group Creator:
 ![grafik](https://user-images.githubusercontent.com/94435104/142742029-13d6ff95-8f06-4963-a361-6d510b66b9a5.png)
 
