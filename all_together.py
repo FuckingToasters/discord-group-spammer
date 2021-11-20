@@ -215,12 +215,6 @@ elif option == "3":
                 check = all_of_it.find(l2)
                 if check != -1: pass
                 else:
-                    """
-                    ==========================================================================================================================================
-                    if you want to send messages in a loop, uncomment the 'while True' by removing the '#' and add a '#' at 'for line in range(message_count):'
-                    If you use 'while True' messages probably will be sent again in a group, they already where sent in!
-                    ==========================================================================================================================================
-                    """
                     # while True:
                     for _ in range(message_count):
                         try:
@@ -302,9 +296,9 @@ elif option == "4":
                         time.sleep(json_resp['retry_after'])
 
 
-    # changing the value of the variable "th" might cause connection issues and the whole code will run wayyy slower even if you put a higher number.
-    # this number do NOT mean the total requests. the number of connections at the same time is meant. the total connections are defined in for line in shit
-    # so the total number of connections equals to the lines of the group_id.txt file.
+    # changing the value of the range(10) might cause connection issues and the whole code will run wayyy slower even if you put a higher number.
+    # this number do NOT mean the total requests. the number of connections at the same time is meant. the total requests are defined in for line in shit
+    # so the total number of requests equals to the number of lines in the group_id.txt file.
     for i in range(10):
         t = threading.Thread(target=sendreq)
         t.start()
