@@ -192,7 +192,7 @@ elif option == "2":
 
 
     def sendreq():
-        shit = open('group_id.txt')
+        shit = open('group_id.txt', mode="a+")
         for line in shit:
             l2 = random.choice(open('group_id.txt').readlines())
             already_checked = open('log.txt', mode='a+')
@@ -209,11 +209,11 @@ elif option == "2":
                         print(f"{colorama.Fore.LIGHTGREEN_EX}[+] Added User to Group => ID: {channelid}{colorama.Fore.RESET}")
 
                     elif response.status_code == 429:
-                        print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
+                        print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}\n")
                         time.sleep(json_resp['retry_after'])
-                    else: print(f"{colorama.Fore.LIGHTRED_EX}    [+] User NOT Added to Group => HTTP Error: {response.status_code}{colorama.Fore.RESET}")
+                    else: print(f"{colorama.Fore.LIGHTRED_EX}    [+] User NOT Added to Group => HTTP Error: {response.status_code}{colorama.Fore.RESET}\n")
 
-                except: print(f"{colorama.Fore.LIGHTRED_EX}    [+] User NOT Added to Group => HTTP Error: {response.status_code}{colorama.Fore.RESET}")
+                except: print(f"{colorama.Fore.LIGHTRED_EX}    [+] User NOT Added to Group => HTTP Error: {response.status_code}{colorama.Fore.RESET}\n")
 
     # changing the value of the variable "th" might cause connection issues and the whole code will run wayyy slower even if you put a higher number.
     # this number do NOT mean the total requests. the number of connections at the same time is meant. the total connections are defined in for line in shit
@@ -224,7 +224,7 @@ elif option == "2":
 
 # Mass Group Name Changer
 elif option == "3":
-    with open("config.json") as conf:
+    with open("config.json", "a+") as conf:
         config = json.load(conf)
         token = config["token"]
 
@@ -250,7 +250,7 @@ elif option == "3":
 
 # Mass Group Icon Changer
 elif option == "4":
-    with open("config.json") as conf:
+    with open("config.json", "a+") as conf:
         config = json.load(conf)
         token = config["token"]
         image_path = config["icon path"]
@@ -259,7 +259,7 @@ elif option == "4":
         try:
             shit = open('group_id.txt')
             for _ in shit:
-                l2 = random.choice(open('group_id.txt').readlines())
+                l2 = random.choice(open('group_id.txt', mode='a+').readlines())
                 already_checked = open('log.txt', mode='a+')
                 all_of_it = already_checked.read()
                 check = all_of_it.find(l2)
@@ -273,10 +273,10 @@ elif option == "4":
                             bot = discum.Client(token=token, log={"console": False, "file": False})
                             bot.setDmGroupIcon(group_id, image_path)
                             time.sleep(random.randint(0, 2))
-                            print(f"{colorama.Fore.LIGHTGREEN_EX}    [+] Changed Group Icon => ID: {group_id}{colorama.Fore.RESET}")
+                            print(f"{colorama.Fore.LIGHTGREEN_EX}    [+] Changed Group Icon => ID: {group_id}{colorama.Fore.RESET}\n")
 
-                        except IndexError: print(f"{colorama.Fore.LIGHTRED_EX}    No GroupID to change the icon to found in log.txt")
-                        except: print(f"{colorama.Fore.LIGHTRED_EX}    [-] Group Icon NOT changed to: {image_path}")
+                        except IndexError: print(f"{colorama.Fore.LIGHTRED_EX}    No GroupID to change the icon to found in log.txt\n")
+                        except: print(f"{colorama.Fore.LIGHTRED_EX}    [-] Group Icon NOT changed to: {image_path}\n")
         except:
             print(json_resp['retry_after']), time.sleep(json_resp['retry_after'])
 
@@ -293,9 +293,9 @@ elif option == "5":
 
 
     def sendreq():
-        shit = open('group_id.txt')
+        shit = open('group_id.txt', mode="a+")
         for _ in shit:
-            l2 = random.choice(open('group_id.txt').readlines())
+            l2 = random.choice(open('group_id.txt', mode="a+").readlines())
             already_checked = open('log.txt', mode='a+')
             all_of_it = already_checked.read()
             check = all_of_it.find(l2)
@@ -336,11 +336,11 @@ elif option == "5":
                         json_resp = json.loads(response.content)
                         if response.status_code == 200 or response.status_code == 204 or response.status_code == 201: print(f'    {colorama.Fore.LIGHTGREEN_EX}[+] Message Sent To {channelid} {colorama.Fore.RESET}\n')
                         if response.status_code == 429:
-                            print(f"    {colorama.Fore.LIGHTRED_EX}[-] Message Not Sent To {channelid} => Ratelimit for {json_resp['retry_after']} seconds!{colorama.Fore.RESET}")
+                            print(f"    {colorama.Fore.LIGHTRED_EX}[-] Message Not Sent To {channelid} => Ratelimit for {json_resp['retry_after']} seconds!{colorama.Fore.RESET}\n")
                             time.sleep(json_resp['retry_after'])
 
                     except:
-                        print(f"    {colorama.Fore.LIGHTRED_EX}[-] Message Not Sent To {channelid} => Ratelimit for {json_resp['retry_after']} seconds!{colorama.Fore.RESET}")
+                        print(f"    {colorama.Fore.LIGHTRED_EX}[-] Message Not Sent To {channelid} => Ratelimit for {json_resp['retry_after']} seconds!{colorama.Fore.RESET}\n")
                         time.sleep(json_resp['retry_after'])
 
 
