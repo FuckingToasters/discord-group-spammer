@@ -52,20 +52,20 @@ import threading
 
 developer = "testuser#0001"
 
-
+# https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20 => ASCII Art
 def logo():
     if os.name == "nt": ctypes.windll.kernel32.SetConsoleTitleW(
         f'[Mass Group Manager] | Ready for use <3')  # windows system
     return (print(f"""{colorama.Fore.RESET}{colorama.Fore.LIGHTMAGENTA_EX}
 
-    ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗      ██████╗ ██████╗  ██████╗ ██╗   ██╗██████╗          ██╗ ██████╗ ██╗███╗   ██╗███████╗██████╗ 
-    ██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗    ██╔════╝ ██╔══██╗██╔═══██╗██║   ██║██╔══██╗         ██║██╔═══██╗██║████╗  ██║██╔════╝██╔══██╗
-    ██║  ██║██║███████╗██║     ██║   ██║██████╔╝██║  ██║    ██║  ███╗██████╔╝██║   ██║██║   ██║██████╔╝         ██║██║   ██║██║██╔██╗ ██║█████╗  ██████╔╝
-    ██║  ██║██║╚════██║██║     ██║   ██║██╔══██╗██║  ██║    ██║   ██║██╔══██╗██║   ██║██║   ██║██╔═══╝     ██   ██║██║   ██║██║██║╚██╗██║██╔══╝  ██╔══██╗
-    ██████╔╝██║███████║╚██████╗╚██████╔╝██║  ██║██████╔╝    ╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║         ╚█████╔╝╚██████╔╝██║██║ ╚████║███████╗██║  ██║
-    ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝          ╚════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
+    ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗     ████████╗ ██████╗  ██████╗ ██╗     ███████╗
+    ██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔══██╗    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     ██╔════╝
+    ██║  ██║██║███████╗██║     ██║   ██║██████╔╝██║  ██║       ██║   ██║   ██║██║   ██║██║     ███████╗
+    ██║  ██║██║╚════██║██║     ██║   ██║██╔══██╗██║  ██║       ██║   ██║   ██║██║   ██║██║     ╚════██║
+    ██████╔╝██║███████║╚██████╗╚██████╔╝██║  ██║██████╔╝       ██║   ╚██████╔╝╚██████╔╝███████╗███████║
+    ╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝        ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝╚══════╝
 
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     created by {developer}
     {colorama.Fore.LIGHTCYAN_EX}
     [1] Mass Group Creator
@@ -76,8 +76,8 @@ def logo():
     [6] Mass Fetch Members from a Guild
     {colorama.Fore.RESET}
     """))
-
 logo()
+
 option = input(f"{colorama.Fore.LIGHTMAGENTA_EX}    [Final] Select a Option from above: ")
 if option != "1" and option != "2" and option != "3" and option != "4" and option != "5" and option != "6": print(
     f"{colorama.Fore.RED}    [!] Invalid Option selected!{colorama.Fore.RESET}"), sys.exit(1337)
@@ -195,7 +195,7 @@ elif option == "2":
         shit = open('group_id.txt')
         for line in shit:
             l2 = random.choice(open('group_id.txt').readlines())
-            already_checked = open('log.txt', mode='r')
+            already_checked = open('log.txt', mode='a+')
             all_of_it = already_checked.read()
             check = all_of_it.find(l2)
             if check != -1:
@@ -237,7 +237,6 @@ elif option == "3":
 
     }
 
-
     def r():
         while True:
             channelid = random.choice(open('group_id.txt').readlines()).strip('\n')
@@ -245,12 +244,9 @@ elif option == "3":
             print(response.content)
             print(response)
 
-
     for i in range(10):
         t = threading.Thread(target=r)
         t.start()
-
-
 
 # Mass Group Icon Changer
 elif option == "4":
@@ -264,7 +260,7 @@ elif option == "4":
             shit = open('group_id.txt')
             for _ in shit:
                 l2 = random.choice(open('group_id.txt').readlines())
-                already_checked = open('log.txt', mode='r')
+                already_checked = open('log.txt', mode='a+')
                 all_of_it = already_checked.read()
                 check = all_of_it.find(l2)
                 if check != -1:
@@ -289,7 +285,7 @@ elif option == "5":
     # make sure to look at the other files and sometimes you se something around "with open("...txt") as file:"
     # this is defently better then just open(...) as it manage the files automatically and you will not need to close the files manually etc.
 
-    open('log.txt', 'w').close()
+    open('log.txt', 'a+').close()
     message = input('    Enter total Messages to be sent: ')  # note: that Messages will be sent to the same group multiplie times if you choose a higher value then the number of groups you are in.
     message_count = int(input('    Enter Message Count: '))
     config = json.load(open('config.json'))
@@ -300,7 +296,7 @@ elif option == "5":
         shit = open('group_id.txt')
         for _ in shit:
             l2 = random.choice(open('group_id.txt').readlines())
-            already_checked = open('log.txt', mode='r')
+            already_checked = open('log.txt', mode='a+')
             all_of_it = already_checked.read()
             check = all_of_it.find(l2)
             if check != -1:
