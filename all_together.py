@@ -1,16 +1,19 @@
 import subprocess
 import os
 
-
 def install_modules():
+    print("Checking Installed Modules and installing missing ones. Please Patience...")
     if os.name != "nt": subprocess.call("apt install python3-pip -y")  # if linux is debian based (not arch based)
-
     subprocess.call("python -m pip install colorama" if os.system == "nt" else
                     "pip3 install colorama",
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
                     shell=False)
 
     subprocess.call("python -m pip install requests" if os.system == "nt" else
                     "pip3 install requests",
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
                     shell=False)
 
     subprocess.call(
@@ -20,17 +23,21 @@ def install_modules():
 
     subprocess.call("python -m pip install ctypes" if os.system == "nt" else
                     "pip3 install ctypes",
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
                     shell=False)
 
     subprocess.call("python -m pip install sys" if os.system == "nt" else
                     "pip3 install sys",
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
                     shell=False)
     subprocess.call("python -m pip install os" if os.system == "nt" else
                     "pip3 install os",
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
                     shell=False)
     os.system("cls" if os.name == "nt" else "clear")
-
-
 install_modules()
 
 import sys
@@ -60,24 +67,19 @@ def logo():
 
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     created by {developer}
+    {colorama.Fore.LIGHTCYAN_EX}
+    [1] Mass Group Creator
+    [2] Mass Member to Group Adder
+    [3] Mass Group Name Changer
+    [4] Mass Group Icon Changer
+    [5] Mass Group Message Sender
+    [6] Mass Fetch Members from a Guild
     {colorama.Fore.RESET}
     """))
 
-
-def main_menu():
-    print(f"""{colorama.Fore.LIGHTCYAN_EX}
-    [1] Mass Group Creator
-    [2] Mass Member to Group Adder
-    [3] Mass Group Icon Changer
-    [4] Mass Group Message Sender
-    {colorama.Fore.RESET}
-    """)
-
-
 logo()
-main_menu()
 option = input(f"{colorama.Fore.LIGHTMAGENTA_EX}    [Final] Select a Option from above: ")
-if option != "1" and option != "2" and option != "3" and option != "4": print(
+if option != "1" and option != "2" and option != "3" and option != "4" and option != "5" and option != "6": print(
     f"{colorama.Fore.RED}    [!] Invalid Option selected!{colorama.Fore.RESET}"), sys.exit(1337)
 
 # Mass Group Creator
@@ -165,7 +167,7 @@ if option == "1":
             time.sleep(0.5)
             response = requests.patch(f'https://discord.com/api/v9/channels/{group_id}', headers=headers, json={'name': random.choice(names)})
 
-            if response.status_code == 200 or response.status_code == 204 or response.status_code == 201: print(f"{colorama.Fore.LIGHTGREEN_EX}[+] Group Created! => ID: {json_resp['id']}{colorama.Fore.RESET}")
+            if response.status_code == 200 or response.status_code == 204 or response.status_code == 201: print(f"{colorama.Fore.LIGHTGREEN_EX}    [+] Group Created! => ID: {json_resp['id']}{colorama.Fore.RESET}")
             else: print(f"{colorama.Fore.LIGHTRED_EX}    [+] Group NOT Created! => HTTP Error: {response.status_code}{colorama.Fore.RESET}")
             with open("group_id.txt", "a") as group_id: group_id.write(json_resp['id'] + '\n')
 
@@ -220,8 +222,38 @@ elif option == "2":
         t = threading.Thread(target=sendreq)
         t.start()
 
-# Mass Group Icon Changer
+# Mass Group Name Changer
 elif option == "3":
+    with open("config.json") as conf:
+        config = json.load(conf)
+        token = config["token"]
+
+    names = ['github.com/FuckingToasters']  # ADD MORE IF NEEDED
+    headers = {
+        "Authorization": token,
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36 OPR/81.0.4196.31"
+
+    }
+
+
+    def r():
+        while True:
+            channelid = random.choice(open('group_id.txt').readlines()).strip('\n')
+            response = requests.patch(f'https://discord.com/api/v9/channels/{channelid}', headers=headers, json={'name': random.choice(names)})
+            print(response.content)
+            print(response)
+
+
+    for i in range(10):
+        t = threading.Thread(target=r)
+        t.start()
+
+
+
+# Mass Group Icon Changer
+elif option == "4":
     with open("config.json") as conf:
         config = json.load(conf)
         token = config["token"]
@@ -238,30 +270,22 @@ elif option == "3":
                 if check != -1:
                     pass
                 else:
-                    """
-                    ==========================================================================================================================================
-                    if you want to send messages in a loop, uncomment the 'while True' by removing the '#' and add a '#' at 'for line in range(message_count):'
-                    If you use 'while True' messages probably will be sent again in a group, they already where sent in!
-                    ==========================================================================================================================================
-                    """
-                    # while True:
-                    for _ in range(message_count):
+                    for _ in shit:
                         try:
-                            with open("log.txt", "a+") as f:
-                                f.write(l2)
+                            with open("log.txt", "a+") as f: f.write(l2)
                             group_id = l2.strip('\n')
                             bot = discum.Client(token=token, log={"console": False, "file": False})
                             bot.setDmGroupIcon(group_id, image_path)
-                            time.sleep(0.5)
-                            print(f"    [+] Group Icon changed to: {image_path}")
+                            time.sleep(random.randint(0, 2))
+                            print(f"{colorama.Fore.LIGHTGREEN_EX}    [+] Changed Group Icon => ID: {group_id}{colorama.Fore.RESET}")
 
-                        except IndexError:
-                            print(f"    {colorama.Fore.LIGHTRED_EX}No GroupID to change the icon to found in log.txt")
+                        except IndexError: print(f"{colorama.Fore.LIGHTRED_EX}    No GroupID to change the icon to found in log.txt")
+                        except: print(f"{colorama.Fore.LIGHTRED_EX}    [-] Group Icon NOT changed to: {image_path}")
         except:
             print(json_resp['retry_after']), time.sleep(json_resp['retry_after'])
 
 # Mass Group Message Sender
-elif option == "4":
+elif option == "5":
     # make sure to look at the other files and sometimes you se something around "with open("...txt") as file:"
     # this is defently better then just open(...) as it manage the files automatically and you will not need to close the files manually etc.
 
@@ -330,3 +354,52 @@ elif option == "4":
     for i in range(10):
         t = threading.Thread(target=sendreq)
         t.start()
+
+elif option == "6":
+    with open("config.json") as conf:
+        config = json.load(conf)
+        token = config["token"]
+    bot = discum.Client(token=token, log={"console": False, "file": False})
+    class MemberTracker: members = {}
+    mt = MemberTracker()
+    # a gateway function
+    def print_members(resp, guild_id):
+        # what discord with to our op14 member subscribe msgs
+        with open("members.txt", "a+") as member_file:
+            all_members = member_file.read()
+            if resp.event.guild_member_list:
+                s = bot.gateway.session
+                if len(s.guild(guild_id).members) > len(mt.members):
+                    mt.members.update(s.guild(guild_id).members)
+                    for i in mt.members.values():
+                        member_file.write(i["username"] + '#' + i['discriminator'] + '\n')
+                        print(i["username"] + '#' + i['discriminator'])
+                    # member_file.write(i["username"], i['discriminator'] + '\n')
+                    # print(i["username"], i['discriminator'])
+
+
+    def close_after_fetching(resp, guild_id):
+        if bot.gateway.finishedMemberFetching(guild_id):
+            length_membersfetched = len(bot.gateway.session.guild(guild_id).members).format(str)
+            print(f"{length_membersfetched} members fetched")
+            bot.gateway.removeCommand({'function': close_after_fetching, 'params': {'guild_id': guild_id}})
+            bot.gateway.close()
+
+
+    def get_members(guild_id, channel_id):
+        bot.gateway.fetchMembers(guild_id, channel_id, keep="all", wait=1)
+        bot.gateway.command({'function': close_after_fetching, 'params': {'guild_id': guild_id}})
+        bot.gateway.run()
+        bot.gateway.resetSession()  # saves 10 seconds when gateway is run again
+        return bot.gateway.session.guild(guild_id).members
+
+
+    guild_id = input("Enter the GuildID: ")
+    channel_id = input("Enter the ChannelID: ")
+    members = get_members(guild_id, channel_id)
+
+    with open('members.txt', 'a+', encoding='utf-8') as f:
+        for m in members.values():
+            user = m["username"] + '#' + m['discriminator']
+            print(user)
+            f.write(user + '\n')
