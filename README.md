@@ -10,10 +10,12 @@
 ### GOOD TO KNOW
 use it with vpn if you have bad proxies. discord will disable accounts if used bad ones
 
-### What you can expect in coming releases:
+### What you can expect in the paid version, that will be out in a few months:
 - multi token support
 - multi proxy support
 - custom useragents
+- option to remove all users from groups
+- option that invites your main account from all tokens, then the tokens leave so you get ownership
 - and more if suggested
 
 # Preview:
