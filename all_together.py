@@ -49,7 +49,6 @@ import json
 import time
 import random
 import threading
-
 developer = "testuser#0001"
 
 # https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20 => ASCII Art
