@@ -7,18 +7,32 @@
 - Make sure to email and phoneverify your account. for email you can use outlook or a catch all mail with custom domain. Use https://5sim.net for phoneverification
 - Let the group maker run for a day or two so can get around 3k groups
 
+### How to run without the need of downloading any files:
+-----------------------------------
+- Go to https://repl.it and create a account.
+- Login with github on repl.it
+- Fork this repo so you see it on your account
+- Create a new repl and choose the forked repo
+- Setup the config.json and run the tool.
+- Use Uptimerobot to ping your repl every 5 Minutes to keep it running 24/7
+
 ### GOOD TO KNOW
-use it with vpn if you have bad proxies. discord will disable accounts if used bad ones
+-----------------------------------
+- Use it with vpn if you have bad proxies. discord will disable accounts if used bad ones
+- You only can add users to Groups if they are friend with you and not blocked you.
+
 
 ### What you can expect in the paid version, that will be out in a few months:
-- multi token support
-- multi proxy support
+-----------------------------------
+- Multi token support
+- Multi proxy support
 - custom useragents
-- option to remove all users from groups
-- option that invites your main account from all tokens, then the tokens leave so you get ownership
+- Option to remove all users from groups
+- Option that invites your main account from all tokens, then the tokens leave so you get ownership
 - and more if suggested
 
 # Preview:
+-----------------------------------
 Mass Group Creator:
 ![grafik](https://user-images.githubusercontent.com/94435104/142762775-a9946c34-efd4-4f53-ade3-5f7428cfd56e.png)
 
