@@ -54,7 +54,7 @@ developer = "testuser#0001"
 # https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20 => ASCII Art
 def logo():
     if os.name == "nt": ctypes.windll.kernel32.SetConsoleTitleW(
-        f'[Mass Group Manager] | Ready for use <3')  # windows system
+        f'[Mass Group Manager] | Ready for use <3')  # changing the default windowtitle from "Python" to the string.
     return (print(f"""{colorama.Fore.RESET}{colorama.Fore.LIGHTMAGENTA_EX}
 
     ██████╗ ██╗███████╗ ██████╗ ██████╗ ██████╗ ██████╗     ████████╗ ██████╗  ██████╗ ██╗     ███████╗
@@ -87,7 +87,7 @@ if option == "1":
         config = json.load(conf)
         token = config["token"]
         image_path = config["icon path"]
-        names = [
+        names = [ # names that the groupmaker will set as groupname (choose a random one for each)
             "Fuck you",
             "Stupid",
             "Ass",
@@ -350,6 +350,7 @@ elif option == "5":
         t = threading.Thread(target=sendreq)
         t.start()
 
+# Mass Member grabber
 elif option == "6":
     with open("config.json") as conf:
         config = json.load(conf)
