@@ -1,4 +1,7 @@
-# EDUCATIONAL ONLY! 
+# EDUCATIONAL ONLY!
+
+### The Member Adder got "patched" (Discord added 10+ Seconds ratelimit per 10 Groups. Currently working on a Bypass - 01.12.2021)
+
 ### HOW TO INSTALL
 -----------------------------------
 - Edit config.json with your discord account token and the imagepath (if its in the same location as the all_together.py file you only need to type cool.jpg)
