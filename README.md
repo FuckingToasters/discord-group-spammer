@@ -1,6 +1,8 @@
 # EDUCATIONAL ONLY!
 
 ### The Member Adder got "patched" (Discord added 10+ Seconds ratelimit per 10 Groups. Currently working on a Bypass - 01.12.2021)
+### If you know, how im able to bypass without to just sleep a bit unil the ratelimit is over, please open a suggestion (use the given template please otherwise i close the suggestion without specifing a reason.)
+### If i do not find any good bypass (expect then waiting for the ratelimit to be over what is quite pointless, i will replace it with another similar tool.)
 
 ### HOW TO INSTALL
 -----------------------------------
