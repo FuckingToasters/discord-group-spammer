@@ -39,8 +39,6 @@ def install_modules():
                     stderr=subprocess.DEVNULL,
                     shell=False)
     os.system("cls" if os.name == "nt" else "clear")
-
-
 install_modules()
 
 import sys
@@ -79,6 +77,7 @@ def logo():
     [4] Mass Group Icon Changer
     [5] Mass Group Message Sender
     [6] Mass Fetch Members from a Guild
+    [7] Generate Tempmails with custom domain
     {colorama.Fore.RESET}
     """))
 
@@ -86,8 +85,8 @@ def logo():
 logo()
 
 option = input(f"{colorama.Fore.LIGHTMAGENTA_EX}    [Final] Select a Option from above: ")
-if option != "1" and option != "2" and option != "3" and option != "4" and option != "5" and option != "6": print(
-    f"{colorama.Fore.RED}    [!] Invalid Option selected!{colorama.Fore.RESET}"), sys.exit(1337)
+if option != "1" and option != "2" and option != "3" and option != "4" and option != "5" and option != "6" and option != "7":
+    print(f"{colorama.Fore.RED}    [!] Invalid Option selected!{colorama.Fore.RESET}"), sys.exit(1337)
 
 # Mass Group Creator
 if option == "1":
@@ -96,13 +95,13 @@ if option == "1":
         token = config["token"]
         image_path = config["icon path"]
         names = [
-            "love",
-            "marry me",
-            "just a group",
-            "be kind",
-            "only educational use",
+            "Discord System",
+            "Clyde",
+            "Official Discord Group",
+            "Law Enforcement",
+            "Discord Bots",
             "join the crowd",
-            "add more random names"]
+            "User Agreement",]
 
     headers = {
         "Authorization": token,
@@ -169,8 +168,8 @@ elif option == "2":
                         with open("log.txt", "a+") as f:
                             f.write(rand_line)
                         group_id = rand_line.strip('\n')
-                        response = requests.put(f'https://discord.com/api/v9/channels/{group_id}/recipients/{user_id}',
-                                                headers=headers)
+                        response = requests.put(f'https://discord.com/api/v9/channels/{group_id}/recipients/{user_id}', headers=headers)
+                        json_resp = json.loads(response.content)
                         if response.status_code == 200 or response.status_code == 204 or response.status_code == 201:
                             lines.remove(rand_line)
                             print(
@@ -211,7 +210,6 @@ elif option == "3":
 
     }
 
-
     def sendreq():
         while True:
             try:
@@ -220,8 +218,7 @@ elif option == "3":
                     for _ in lines:
                         rand_line = random.choice(lines)
                         group_id = rand_line.strip('\n')
-                        response = requests.patch(f'https://discord.com/api/v9/channels/{group_id}', headers=headers,
-                                                  json={'name': random.choice(names)})
+                        response = requests.patch(f'https://discord.com/api/v9/channels/{group_id}', headers=headers, json={'name': random.choice(names)})
                         if response.status_code == 200 or response.status_code == 204 or response.status_code == 201:
                             print(
                                 f"{colorama.Fore.LIGHTGREEN_EX}    [+] Requested the API successfully | Group => ID: {group_id} => GroupIDs left: {len(lines)}")
@@ -410,3 +407,10 @@ elif option == "6":
             user = m["username"] + '#' + m['discriminator']
             print(user)
             f.write(user + '\n')
+
+elif option == "7":
+    domain = input("    Enter the domain: ")
+    generate_mails = lambda symbol: symbol[11:] and [symbol[0] + w + x for x in generate_mails(symbol[1:]) for w in ('.', '')] or [symbol]
+    with open("mails.txt", "a+") as file:
+        print("    Generating mails...")
+        for mail in generate_mails(domain): file.write(f"{mail}\n") # take something@example.com as input
