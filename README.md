@@ -3,6 +3,7 @@
 ### The Member Adder got "patched" (Discord added 30+ Seconds ratelimit per 10 Groups. Currently working on a Bypass - 01.12.2021)
 ### If you know, how im able to bypass without to just sleep a bit unil the ratelimit is over, please open a suggestion (use the given template please otherwise i close the suggestion without specifing a reason.)
 ### If i do not find any good bypass (expect then waiting for the ratelimit to be over what is quite pointless, i will replace it with another similar tool.)
+### The Program is still working the only issue is, that after adding a user to 10 Groups, it nends to wait about 30 Seconds (ratelimit) earlier the API endpoint not had any ratelimit. Its still useful if the Victim is offline and dont notice it so he cant block you.
 
 ### HOW TO INSTALL
 -----------------------------------
