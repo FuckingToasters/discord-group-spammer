@@ -1,9 +1,12 @@
 # EDUCATIONAL ONLY!
 
-### The Member Adder got "patched" (Discord added 30+ Seconds ratelimit per 10 Groups. Currently working on a Bypass - 01.12.2021)
-### If you know, how im able to bypass without to just sleep a bit unil the ratelimit is over, please open a suggestion (use the given template please otherwise i close the suggestion without specifing a reason.)
-### If i do not find any good bypass (expect then waiting for the ratelimit to be over what is quite pointless, i will replace it with another similar tool.)
-### The Program is still working the only issue is, that after adding a user to 10 Groups, it needs to wait about 30 Seconds (ratelimit) earlier the API endpoint not had any ratelimit. Its still useful if the Victrim is offline and dont notice it so he cant block you.
+### Important News: 
+Because most of the options got patched by Discord (more info below) i will start to implement more Tools that should be undetected by discord.
+You can expect Tools like Guild and DM Spammer, Guild spam joiner and more. You also can suggest me some things on the issue tab.
+It would be nice to get more ideas what you guys like me to implement. Thank u for the patience <3
+
+The Member Adder got "patched" (Discord added 30+ Seconds ratelimit per 10 Groups. Currently working on a Bypass - 01.12.2021)
+The Program is still working the only issue is, that after adding a user to 10 Groups, it needs to wait about 30 Seconds (ratelimit) earlier the API endpoint not had any ratelimit. Its still useful if the Victrim is offline and dont notice it so he cant block you.
 
 ### HOW TO INSTALL
 -----------------------------------
@@ -26,16 +29,6 @@
 -----------------------------------
 - Use it with vpn if you have bad proxies. discord will disable accounts if used bad ones
 - You only can add users to Groups if they are friend with you and not blocked you.
-
-
-### What you can expect in the paid version, that will be out in a few months:
------------------------------------
-- Multi token support
-- Multi proxy support
-- custom useragents
-- Option to remove all users from groups
-- Option that invites your main account from all tokens, then the tokens leave so you get ownership
-- and more if suggested
 
 # Preview:
 -----------------------------------
