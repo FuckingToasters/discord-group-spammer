@@ -90,11 +90,7 @@ if option == "1":
 
             except:
                 print(r)
-                print("=" * 10)
                 json_resp = r.json()
-                print(json_resp)
-                print("=" * 10)
-                print(r.json())
                 print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
                 time.sleep(json_resp['retry_after'])
                 creator()
