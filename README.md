@@ -8,6 +8,8 @@ It would be nice to get more ideas what you guys like me to implement. Thank u f
 The Member Adder got "patched" (Discord added 30+ Seconds ratelimit per 10 Groups. Currently working on a Bypass - 01.12.2021)
 The Program is still working the only issue is, that after adding a user to 10 Groups, it needs to wait about 30 Seconds (ratelimit) earlier the API endpoint not had any ratelimit. Its still useful if the Victrim is offline and dont notice it so he cant block you.
 
+### Discord made a bad desicion with the ratelimit, which trigger me rly hard thus i picked up on this project and work on proxy support, multi account support & more. You will be able to put UserIDs in a tectdocument which is used then. you will be able to defne how much groups it should create per account and how much friend request it should send to how much IDs per Account. After that's done the script will be sexy again. Good Luck with the current version tho
+
 ### HOW TO INSTALL
 -----------------------------------
 - Edit config.json with your discord account token and the imagepath (if its in the same location as the all_together.py file you only need to type cool.jpg)
