@@ -1,5 +1,6 @@
 import os
 os.system("pip install -r requirements.txt")
+os.system("cls" if os.name == "nt" else "clear") # if you are running it on windows, it will run the cls command in the terminal to clear it. On Linux it will run the clear command.
 import sys
 import colorama
 import ctypes
