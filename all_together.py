@@ -1,46 +1,5 @@
-import subprocess
 import os
-
-
-def install_modules():
-    print("Checking Installed Modules and installing missing ones. Please Patience...")
-    if os.name != "nt": subprocess.call("apt install python3-pip -y")  # if linux is debian based (not arch based)
-    subprocess.call("python -m pip install colorama" if os.system == "nt" else
-                    "pip3 install colorama",
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                    shell=False)
-
-    subprocess.call("python -m pip install requests" if os.system == "nt" else
-                    "pip3 install requests",
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                    shell=False)
-
-    subprocess.call(
-        "python -m pip install --upgrade git+https://github.com/Merubokkusu/Discord-S.C.U.M.git#egg=discum" if os.system == "nt" else
-        "pip3 install --upgrade git+https://github.com/Merubokkusu/Discord-S.C.U.M.git#egg=discum",
-        shell=False)
-
-    subprocess.call("python -m pip install ctypes" if os.system == "nt" else
-                    "pip3 install ctypes",
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                    shell=False)
-
-    subprocess.call("python -m pip install sys" if os.system == "nt" else
-                    "pip3 install sys",
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                    shell=False)
-    subprocess.call("python -m pip install os" if os.system == "nt" else
-                    "pip3 install os",
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                    shell=False)
-    os.system("cls" if os.name == "nt" else "clear")
-install_modules()
-
+os.system("pip install -r requirements.txt")
 import sys
 import colorama
 import ctypes
@@ -50,11 +9,8 @@ import json
 import time
 import random
 import threading
-import multiprocessing
 
 developer = "testuser#0001"
-
-
 # https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20 => ASCII Art
 def logo():
     if os.name == "nt": ctypes.windll.kernel32.SetConsoleTitleW(
@@ -105,7 +61,6 @@ if option == "1":
 
     headers = {
         "Authorization": token,
-        "accept-encoding": "gzip, deflate, br",
         "accept-language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36 OPR/81.0.4196.31"
 
@@ -132,8 +87,13 @@ if option == "1":
                 group_id.write(json_resp['id'] + '\n')
 
         except:
-            print(
-                f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
+            print(r)
+            print("=" * 10)
+            json_resp = r.json()
+            print(json_resp)
+            print("=" * 10)
+            print(r.json())
+            print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
             time.sleep(json_resp['retry_after'])
 
 # Mass Member to Group Adder
