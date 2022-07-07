@@ -47,7 +47,7 @@ if option != "1" and option != "2" and option != "3" and option != "4" and optio
 
 # Mass Group Creator
 if option == "1":
-    creator():
+    def creator():
         with open("config.json") as conf:
             config = json.load(conf)
             token = config["token"]
@@ -77,7 +77,7 @@ if option == "1":
                 bot.setDmGroupIcon(group_id, image_path)
                 time.sleep(0.5)
                 response = requests.patch(f'https://discord.com/api/v9/channels/{group_id}', headers=headers,
-                                          json={'name': random.choice(names)})
+                                            json={'name': random.choice(names)})
 
                 if response.status_code == 200 or response.status_code == 204 or response.status_code == 201:
                     print(
@@ -97,7 +97,8 @@ if option == "1":
                 print(r.json())
                 print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
                 time.sleep(json_resp['retry_after'])
-    creator():
+                creator()
+    creator()
 
 # Mass Member to Group Adder
 elif option == "2":
