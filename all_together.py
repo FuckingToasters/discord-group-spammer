@@ -80,16 +80,13 @@ if option == "1":
                                             json={'name': random.choice(names)})
 
                 if response.status_code == 200 or response.status_code == 204 or response.status_code == 201:
-                    print(
-                        f"{colorama.Fore.LIGHTGREEN_EX}    [+] Group Created! => ID: {json_resp['id']}{colorama.Fore.RESET}")
+                    print(f"{colorama.Fore.LIGHTGREEN_EX}    [+] Group Created! => ID: {json_resp['id']}{colorama.Fore.RESET}")
                 else:
-                    print(
-                        f"{colorama.Fore.LIGHTRED_EX}    [+] Group NOT Created! => HTTP Error: {response.status_code}{colorama.Fore.RESET}")
+                    print(f"{colorama.Fore.LIGHTRED_EX}    [+] Group NOT Created! => HTTP Error: {response.status_code}{colorama.Fore.RESET}")
                 with open("group_id.txt", "a") as group_id:
                     group_id.write(json_resp['id'] + '\n')
 
             except:
-                print(r)
                 json_resp = r.json()
                 print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
                 time.sleep(json_resp['retry_after'])
