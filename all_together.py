@@ -47,55 +47,57 @@ if option != "1" and option != "2" and option != "3" and option != "4" and optio
 
 # Mass Group Creator
 if option == "1":
-    with open("config.json") as conf:
-        config = json.load(conf)
-        token = config["token"]
-        image_path = config["icon path"]
-        names = [
-            "Discord System",
-            "Clyde",
-            "Official Discord Group",
-            "Law Enforcement",
-            "Discord Bots",
-            "join the crowd",
-            "User Agreement",]
+    creator():
+        with open("config.json") as conf:
+            config = json.load(conf)
+            token = config["token"]
+            image_path = config["icon path"]
+            names = [
+                "Discord System",
+                "Clyde",
+                "Official Discord Group",
+                "Law Enforcement",
+                "Discord Bots",
+                "join the crowd",
+                "User Agreement",]
 
-    headers = {
-        "Authorization": token,
-        "accept-language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36 OPR/81.0.4196.31"
+        headers = {
+            "Authorization": token,
+            "accept-language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36 OPR/81.0.4196.31"
 
-    }
+        }
 
-    while True:
-        try:
-            r = requests.post('https://discord.com/api/v9/users/@me/channels', headers=headers, json={"recipients": []})
-            json_resp = json.loads(r.content)
-            group_id = json_resp['id']
-            bot = discum.Client(token=token, log={"console": False, "file": False})
-            bot.setDmGroupIcon(group_id, image_path)
-            time.sleep(0.5)
-            response = requests.patch(f'https://discord.com/api/v9/channels/{group_id}', headers=headers,
-                                      json={'name': random.choice(names)})
+        while True:
+            try:
+                r = requests.post('https://discord.com/api/v9/users/@me/channels', headers=headers, json={"recipients": []})
+                json_resp = json.loads(r.content)
+                group_id = json_resp['id']
+                bot = discum.Client(token=token, log={"console": False, "file": False})
+                bot.setDmGroupIcon(group_id, image_path)
+                time.sleep(0.5)
+                response = requests.patch(f'https://discord.com/api/v9/channels/{group_id}', headers=headers,
+                                          json={'name': random.choice(names)})
 
-            if response.status_code == 200 or response.status_code == 204 or response.status_code == 201:
-                print(
-                    f"{colorama.Fore.LIGHTGREEN_EX}    [+] Group Created! => ID: {json_resp['id']}{colorama.Fore.RESET}")
-            else:
-                print(
-                    f"{colorama.Fore.LIGHTRED_EX}    [+] Group NOT Created! => HTTP Error: {response.status_code}{colorama.Fore.RESET}")
-            with open("group_id.txt", "a") as group_id:
-                group_id.write(json_resp['id'] + '\n')
+                if response.status_code == 200 or response.status_code == 204 or response.status_code == 201:
+                    print(
+                        f"{colorama.Fore.LIGHTGREEN_EX}    [+] Group Created! => ID: {json_resp['id']}{colorama.Fore.RESET}")
+                else:
+                    print(
+                        f"{colorama.Fore.LIGHTRED_EX}    [+] Group NOT Created! => HTTP Error: {response.status_code}{colorama.Fore.RESET}")
+                with open("group_id.txt", "a") as group_id:
+                    group_id.write(json_resp['id'] + '\n')
 
-        except:
-            print(r)
-            print("=" * 10)
-            json_resp = r.json()
-            print(json_resp)
-            print("=" * 10)
-            print(r.json())
-            print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
-            time.sleep(json_resp['retry_after'])
+            except:
+                print(r)
+                print("=" * 10)
+                json_resp = r.json()
+                print(json_resp)
+                print("=" * 10)
+                print(r.json())
+                print(f"{colorama.Fore.LIGHTRED_EX}    [429] Discord reject requests for {json_resp['retry_after']} Seconds now. I will continue after that time...{colorama.Fore.RESET}")
+                time.sleep(json_resp['retry_after'])
+    creator():
 
 # Mass Member to Group Adder
 elif option == "2":
